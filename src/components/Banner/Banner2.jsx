@@ -1,47 +1,61 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { SlideLeft } from "../../utility/animation";
+import { SlideUp } from "../../utility/animation";
 
 const Banner2 = () => {
   return (
-    <div className="container my-14">
-      <div className="bg-[#f9f9f9] py-14 md:py-24 flex justify-center items-center">
-        {/* brand info */}
-        <div className="flex flex-col justify-center text-center space-y-8 lg:px-44">
-          <motion.h1
-            variants={SlideLeft(0.5)}
-            initial="hidden"
-            whileInView={"visible"}
-            viewport={{ once: true }}
-            className="text-3xl lg:text-5xl font-bold uppercase"
+    <section className="bg-lime text-iron py-20 md:py-28">
+      <div className="container flex flex-col items-center text-center space-y-7">
+        <motion.p
+          variants={SlideUp(0.1)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="font-mono text-xs uppercase tracking-widest2"
+        >
+          First 14 Days
+        </motion.p>
+        <motion.h2
+          variants={SlideUp(0.2)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="font-display uppercase text-4xl md:text-6xl leading-[0.95] max-w-3xl"
+        >
+          Half Off, No Contract, No Excuse Left
+        </motion.h2>
+        <motion.p
+          variants={SlideUp(0.3)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="max-w-[480px] text-iron/70"
+        >
+          Bring a gym bag and a number you want to beat. We'll handle the
+          programming, the spotting, and the noise.
+        </motion.p>
+        <motion.div
+          variants={SlideUp(0.4)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex flex-wrap justify-center gap-4 pt-2"
+        >
+          <a
+            href="#pricing"
+            className="bg-iron text-chalk font-mono font-semibold uppercase tracking-widest text-xs py-4 px-7 hover:-translate-y-0.5 transition-transform duration-300"
           >
-            Get 20% Discount On Your First Order, Are You Ready To Buy
-          </motion.h1>
-          <motion.p
-            variants={SlideLeft(0.7)}
-            initial="hidden"
-            whileInView={"visible"}
-            viewport={{ once: true }}
-            className=""
+            Claim the Offer
+          </a>
+          <a
+            href="#trainer"
+            className="border-2 border-iron text-iron font-mono font-semibold uppercase tracking-widest text-xs py-4 px-7 hover:bg-iron hover:text-chalk transition-colors duration-300"
           >
-            We will make sure you get the right and the best quality products
-            for your workout
-          </motion.p>
-          <motion.div
-            variants={SlideLeft(0.9)}
-            initial="hidden"
-            whileInView={"visible"}
-            viewport={{ once: true }}
-            className="flex justify-center gap-6"
-          >
-            <button className="primary-btn">Learn More</button>
-            <button className="border-2 border-primary text-primary font-bold px-5 rounded-lg">
-              Stay In Touch
-            </button>
-          </motion.div>
-        </div>
+            Talk to a Coach
+          </a>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 
