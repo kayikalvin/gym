@@ -3,64 +3,75 @@ import { GrYoga } from "react-icons/gr";
 import { FaDumbbell } from "react-icons/fa6";
 import { GiGymBag } from "react-icons/gi";
 import { motion } from "framer-motion";
-import { SlideLeft } from "../../utility/animation";
+import { SlideUp } from "../../utility/animation";
 
-const EquipmentData = [
+const ProgramData = [
   {
-    id: 1,
-    title: "Yoga Equipments",
-    desc: "It is a long established fact that a reader readable.",
+    id: "01",
+    title: "Yoga & Mobility",
+    desc: "Slow, controlled work that keeps the joints you're loading honest.",
     icon: <GrYoga />,
-    delay: 0.3,
   },
   {
-    id: 2,
-    title: "Muscles Equipments",
-    desc: "It is a long established fact that a reader readable.",
-    link: "/",
+    id: "02",
+    title: "Strength & Muscle",
+    desc: "Barbell-first programming, progressive load, six-week blocks.",
     icon: <FaDumbbell />,
-    delay: 0.6,
   },
   {
-    id: 3,
-    title: "Fitness Equipments",
-    desc: "It is a long established fact that a reader readable.",
-    link: "/",
+    id: "03",
+    title: "Conditioning",
+    desc: "Short, brutal, and over before you can talk yourself out of it.",
     icon: <GiGymBag />,
-    delay: 0.9,
   },
 ];
+
 const Equipments = () => {
   return (
-    <div>
-      <div className="container py-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 font-playfair">
-          <div className="space-y-4 p-6">
-            <h1 className="text-3xl md:text-4xl font-bold">
-              What we offer for you
-            </h1>
-            <p className="text-gray-500">
-              It is a long established fact that a reader readable.
-            </p>
+    <section className="py-24 md:py-32">
+      <div className="container">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div>
+            <p className="eyebrow mb-4">What we run on the floor</p>
+            <h2 className="font-display uppercase text-4xl md:text-5xl leading-[0.95]">
+              Three Ways
+              <br />
+              To Get Worked
+            </h2>
           </div>
-          {EquipmentData.map((item) => {
-            return (
-              <motion.div
-                variants={SlideLeft(item.delay)}
-                initial="hidden"
-                whileInView="visible"
-                key={item.id}
-                className="bg-gray-100 space-y-4 p-6 hover:bg-white rounded-xl hover:shadow-[0_0_22px_0_rgba(0,0,0,0.15)] "
-              >
-                <div className="text-4xl">{item.icon}</div>
-                <p className="text-2xl font-semibold">{item.title}</p>
-                <p className="text-gray-500">{item.desc}</p>
-              </motion.div>
-            );
-          })}
+          <p className="text-steel max-w-[340px]">
+            Pick one or stack all three — most members rotate through every
+            block across a training cycle.
+          </p>
+        </div>
+
+        <div className="rule">
+          {ProgramData.map((item, i) => (
+            <motion.div
+              key={item.id}
+              variants={SlideUp(i * 0.12)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="group grid grid-cols-[3rem_1fr_auto] md:grid-cols-[5rem_3rem_1fr] items-center gap-4 md:gap-8 py-8 border-b border-chalk/15 hover:bg-ironsoft transition-colors duration-300 -mx-4 px-4 md:-mx-6 md:px-6"
+            >
+              <span className="font-mono text-steel text-sm md:text-base order-1">
+                {item.id}
+              </span>
+              <div className="order-2 md:order-3">
+                <p className="font-display uppercase text-2xl md:text-3xl tracking-tight">
+                  {item.title}
+                </p>
+                <p className="text-steel mt-1 max-w-[480px]">{item.desc}</p>
+              </div>
+              <span className="text-3xl text-lime order-3 md:order-2">
+                {item.icon}
+              </span>
+            </motion.div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
